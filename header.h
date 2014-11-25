@@ -12,5 +12,6 @@ using namespace std;
 string getFilename(int state);
 void saveStats(string filename, int statArray[], int statSize);
 void loadStats(string filename, int statArray[], int statSize);
-
+void mainMenu();
+void displayArt(int code);
 #endif

@@ -10,6 +10,7 @@
 using namespace std;
 
 int main() {
-
+    displayArt(1);
+    mainMenu();
     return 0;
 }
