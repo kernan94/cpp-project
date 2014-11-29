@@ -1,5 +1,28 @@
+/*
+Author: Reuben Kernan & Kevin Law
+Class: CSI-140-01
+Assignment: Final Project
+Date Assigned: Week 13
+Due Date: 17:00 EST, Dec 5, 2014
+
+Description:
+Text based adventure
+
+Certification of Authenticity:
+I certify that this is entirely my own work, except where I have given
+fully-documented references to the work of others. I understand the
+definition and consequences of plagiarism and acknowledge that the assessor
+of this assignment may, for the purpose of assessing this assignment:
+-   Reproduce this assignment and provide a copy to another member of
+academic staff; and/or
+-   Communicate a copy of this assignment to a plagiarism checking
+service (which may then retain a copy of this assignment on its
+database for the purpose of future plagiarism checking)
+*/
+
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
+
 #include <iostream>
 #include <iomanip>
 #include <sstream>
@@ -9,9 +32,27 @@
 #include <ctime>
 using namespace std;
 
+/*
+Prototypes need only the data types.
 string getFilename(int state);
 void saveStats(string filename, int statArray[], int statSize);
 void loadStats(string filename, int statArray[], int statSize);
 void mainMenu();
 void displayArt(int code);
+*/
+string getFilename(int);
+void saveStats(string, int[], int);
+void loadStats(string, int[], int);
+void mainMenu();
+void displayArt(int);
+void charGen(string&, int&, int&, int&, int&, int&);
+void extractArray(string&, int&, int&, int&, int&, int&, string[]);
+int roomChoice(string, int, int);
+bool resolveCombat(int, int&, int, int&, int, int[]);
+void enemyGen(int, int[]);
+void charDeath(int);
+
+string convertInt2Str(int);
+int convertStr2Int(string);
+
 #endif
