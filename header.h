@@ -41,13 +41,13 @@ void mainMenu();
 void displayArt(int code);
 */
 string getFilename(int);
-void saveStats(string, int[], int);
-void loadStats(string, int[], int);
+void saveStats(string, string[], int);
+void loadStats(string, string[], int);
 void mainMenu();
 void displayArt(int);
 void charGen(string&, int&, int&, int&, int&, int&);
 void extractArray(string&, int&, int&, int&, int&, int&, string[]);
-int roomChoice(string, int, int);
+int roomChoice(string, int, int, int);
 bool resolveCombat(int, int&, int, int&, int, int[]);
 void enemyGen(int, int[]);
 void charDeath(int);

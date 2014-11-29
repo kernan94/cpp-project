@@ -12,6 +12,9 @@ string getFilename(int state){
     if (state == 1){
         cout << "Input Filename: ";
         cin >> inputFile;
+        cin.clear();
+        cin.sync();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
 
         fin.open(inputFile.c_str(), ios::in);
         if(fin.fail()){
@@ -25,6 +28,10 @@ string getFilename(int state){
         while (true){
         cout << "Output Filename: ";
         cin >> outputFile;
+        cin.clear();
+        cin.sync();
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
+
         fout.open(outputFile.c_str(), ios::in);
             if(fout.good()){ // file we are going to write to exists!
                 cout << outputFile << " already exists, overwrite? (Y/N)" << endl;
@@ -41,16 +48,18 @@ string getFilename(int state){
     }
 }
 
-void saveStats(string filename, int statArray[], int statSize){
+void saveStats(string filename, string statArray[], int statSize){
     ofstream fout;
+    fout.open(filename.c_str(), ios::out);
 
-    
-    
+    for (int x=0; x < statSize; x++){
+        fout << statArray[x] << endl;
+    }
 
-
+    fout.close();
 }
 
-void loadStats(string filename, int statArray[], int statSize){
+void loadStats(string filename, string statArray[], int statSize){
     ifstream fin;
 
 
@@ -104,7 +113,9 @@ void charGen(string& name, int& health, int& power, int& room, int& potion, int&
 {
    cout << "What is the hero's name?" << endl;
    cin >> name; //charName
-
+   cin.clear();
+   cin.sync();
+   cin.ignore(numeric_limits<streamsize>::max(),'\n');
    health = rand() % 41 + 40; //charHealth. between 40 and 80.
    power = rand() % 6 + 5; //charPower. between 5 and 11.
    room = 1; //New characters starts in room 1.
@@ -134,16 +145,28 @@ Pre:
 Post: combatChoice is returned.
 Author: Reuben.
 */
-int roomChoice(string name, int health, int potions)
+int roomChoice(string name, int health, int potions, int room)
 {
-   int action;
+    string input = "";
+    int action;
+    
+    cout << "Current room: " << room << endl;
+    cout << name << "'s health is at " << health << " and " << name << " has " << potions << " potion(s)." << endl;
+    cout << "What would you like to do?" << endl;
+    cout << "1. Attack" << setw(10) << "" << "2. Use Potion" << setw(10) << "" << "3. Run" << endl;
+    cout << "4. Save" << setw(10) << "" << " 5. Quit" << endl;
+    cin.clear();
 
-   cout << name << "'s health is at " << health << " and " << name << " has " << potions << " potion(s)." << endl;
-   cout << "What would you like to do?" << endl;
-   cout << "1. Attack" << setw(10) << "" << "2. Use Potion" << setw(10) << "" << "3. Run" << endl;
-   cout << "Your choice is: ";
-
-   cin >> action;
+    while(true) {
+        cout << "Your choice is: ";
+        getline(cin, input);
+        
+        stringstream convertStream(input);
+        if (convertStream >> action){
+            break;
+        }
+        cout << "Please enter valid input" << endl;
+    }
    return action;
 }
 
