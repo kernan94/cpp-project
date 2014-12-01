@@ -71,7 +71,7 @@ void displayArt(int code) {
         // Logo
         case 1:
             cout << "Some ascii art" << endl;
-            cout << "Welcome to game X" << endl;
+            cout << "Welcome to game" << endl;
             break;
 
         // Character
