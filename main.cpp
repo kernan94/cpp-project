@@ -31,7 +31,6 @@ int main()
                 saveStats(filename, statArray, statSize);
            } else if (charAction == 5) {
              exit(0);
-             cout << "RAR" << endl;
           } else {
             fleeCombat = resolveCombat(charAction, charHealth, charPower, potionCount, healthMax, enemyArray);
           }
