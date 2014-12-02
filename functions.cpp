@@ -4,6 +4,7 @@
 // EX: filename = getFilename(1);
 string getFilename(int state){
     string overwrite, inputFile, outputFile;
+    bool alwaysTrue = true;
     ifstream fin;
     ofstream fout;
 
@@ -25,7 +26,7 @@ string getFilename(int state){
 
     
     }else{
-        while (true){
+        while (alwaysTrue){
         cout << "Output Filename: ";
         cin >> outputFile;
         cin.clear();
@@ -46,6 +47,9 @@ string getFilename(int state){
          fout.close();   
         }
     }
+
+// Should never return this. I'm getting compiler warnings if I don't return a string here.
+return inputFile;
 }
 
 void saveStats(string filename, string statArray[], int statSize){
@@ -70,16 +74,49 @@ void displayArt(int code) {
     switch (code) {
         // Logo
         case 1:
-            cout << "Some ascii art" << endl;
+            cout << "                  {}\n";
+            cout << "  ,   A           {}\n";
+            cout << " / \\, | ,        .--.\n";
+            cout << "|  =|= >        /.--.\\\n";
+            cout << " \\ /` | `       |====|\n";
+            cout << "  `   |         |`::`|\n";
+            cout << "      |     .-;`\\..../`;_.-^-._\n";
+            cout << "     /\\\\/  /  |...::..|`   :   `|\n";
+            cout << "     |:'\\ |   /'''::''|   .:.   |\n";
+            cout << "      \\ /\\;-,/\\   ::  |..Kevin..|\n";
+            cout << "      |\\ <` >  >._::_.| .Reuben |\n";
+            cout << "      | `""`_/  ^^/>/>  |   ':'   |\n";
+            cout << "      |       |       \\    :   /\n";
+            cout << "      |       |        \\   :   /\n";
+            cout << "      |       |___/\\___|`-.:.-`\n";
+            cout << "      |        \\_ || _/    `\n";
+            cout << "      |        <_ >< _>\n";
+            cout << "      |        |  ||  |\n";
+            cout << "      |        |  ||  |\n";
+            cout << "      |       _\\.:||:./_\n";
+            cout << "      |      /____/\\____\\\n";
+            cout << "\n";
             cout << "Welcome to game" << endl;
             break;
 
         // Character
         case 2:
+            cout << "       ,   |\\ ,__\n";
+            cout << "       |\\   \\/   `.\n";
+            cout << "       \\ `-.:.     `\\\n";
+            cout << "        `-.__ `\\=====|\n";
+            cout << "           /=`'/   ^_\\\n";
+            cout << "          .'   /\\   .=)\n";
+            cout << "       .-'  .'|  '-(/_|\n";
+            cout << "       .'  __(  \\  .'`\n";
+            cout << "   /_.'`  `.  |`\n";
+            cout << "            \\ |\n";
+            cout << "             |/\n";
             break;
 
         // Monster
         case 3:
+            
             break;
         }
 }
@@ -111,6 +148,7 @@ Author: Reuben
 */
 void charGen(string& name, int& health, int& power, int& room, int& potion, int& max)
 {
+   displayArt(2);
    cout << "What is the hero's name?" << endl;
    cin >> name; //charName
    cin.clear();
