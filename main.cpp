@@ -2,15 +2,24 @@
 
 int main() 
 {
-   int charHealth = 1, charPower = 1, roomNumber = 1, potionCount = 1, healthMax = 1, charAction, statSize = 6, enemyArray[2]; //enemyArray[health, power]
+   int charHealth = 1, charPower = 1, roomNumber = 1, potionCount = 1, healthMax = 1, charAction, statSize = 6, option, enemyArray[2]; //enemyArray[health, power]
    string charName, filename, statArray[6]; //statArray[name, health, power, room, potion, healthMax]
    bool fleeCombat = false;
 
    srand(unsigned(time(NULL)));
 
     displayArt(1);
-    mainMenu();
-    charGen(charName, charHealth, charPower, roomNumber, potionCount, healthMax);
+    option = mainMenu();
+
+    if (option == 1)
+   {
+      charGen(charName, charHealth, charPower, roomNumber, potionCount, healthMax);
+   }
+    else if (option == 2)
+    {
+       getFilename(1);
+       extractArray(charName, charHealth, charPower, roomNumber, potionCount, healthMax, statArray);
+    }
 
     do
     {

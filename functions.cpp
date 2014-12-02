@@ -96,7 +96,11 @@ void displayArt(int code) {
             cout << "      |       _\\.:||:./_\n";
             cout << "      |      /____/\\____\\\n";
             cout << "\n";
-            cout << "Welcome to game" << endl;
+            cout << "Welcome to Endless Halls of Killing Things for Glory" << endl << endl; //or whatever, think of something better later. Use a focus group.
+            cout << "There is no glory in dying as an old and withered husk, in dying as a frail shadow of former might! ";
+            cout << "And so warriors come to this Hallowed place from all accross the land to test their mettle, one last time. ";
+            cout << "Here they encounter endless ranks of Demons. It is said that they guard an ancient treasure. ";
+            cout << "What is it? Nobody knows. How many rooms must be cleared? Nobody knows. Will the seekers of treasure be immortalised in song for glorious battle? Heck yeah!" << endl << endl;
             break;
 
         // Character
@@ -121,23 +125,29 @@ void displayArt(int code) {
         }
 }
 
-void mainMenu() {
-    int menuValue;
+int mainMenu() {
+    int menuValue, option = -1;//passed to main: 1 will call charGen. 2 loads old character.
     do {
-        cout << "Select an option: " << endl;
-        cout << "1. New Game" << endl;
-        cout << "2. Load Game" << endl;
-        cout << "0. Exit" << endl;
+       do {
+           cout << "Select an option: " << endl;
+           cout << "1. New Game" << endl;
+           cout << "2. Load Game" << endl;
+           cout << "0. Exit" << endl;
         
-        cin >> menuValue;
-        if (menuValue == 1){
-            // newGame();
-        } else if (menuValue == 2){
-            // getFilename(1);
-            // loadStats(filename, statsArray, statSize);
-            // start game
-        }
-    } while( menuValue != 0);
+           cin >> menuValue;
+           if (menuValue == 1){
+               option = 1;
+           } else if (menuValue == 2){
+               option = 2;  
+           } else if (menuValue != 0){
+               cout << "Please enter valid input" << endl;
+           }
+       } while (menuValue != 0); // eliminate loop? continue automatically if  1 or 2 are entered, error message if something else is entered.
+       if (option != 1 && option != 2){
+          cout << "Please choose new or load before exiting menu" << endl;
+       }
+    } while( option != 1 && option != 2);
+   return option;
 }
 
 /*

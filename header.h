@@ -32,18 +32,10 @@ database for the purpose of future plagiarism checking)
 #include <ctime>
 using namespace std;
 
-/*
-Prototypes need only the data types.
-string getFilename(int state);
-void saveStats(string filename, int statArray[], int statSize);
-void loadStats(string filename, int statArray[], int statSize);
-void mainMenu();
-void displayArt(int code);
-*/
 string getFilename(int);
 void saveStats(string, string[], int);
 void loadStats(string, string[], int);
-void mainMenu();
+int mainMenu();
 void displayArt(int);
 void charGen(string&, int&, int&, int&, int&, int&);
 void extractArray(string&, int&, int&, int&, int&, int&, string[]);
