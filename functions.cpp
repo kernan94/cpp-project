@@ -2,6 +2,13 @@
 
 // function used to get filename for saving or loading
 // EX: filename = getFilename(1);
+
+/*
+Purpose: Get filename for save or load function
+Pre: state defined for action
+Post: tests file first, will output if error or warning
+Author: Kevin
+*/
 string getFilename(int state){
     string overwrite, inputFile, outputFile;
     bool alwaysTrue = true;
@@ -37,6 +44,9 @@ string getFilename(int state){
             if(fout.good()){ // file we are going to write to exists!
                 cout << outputFile << " already exists, overwrite? (Y/N)" << endl;
                 cin >> overwrite;
+                cin.clear();
+                cin.sync();
+                cin.ignore(numeric_limits<streamsize>::max(),'\n');
                 if (overwrite == "Y" || overwrite == "y") {
                     fout.close();
                     return outputFile;   
@@ -52,6 +62,12 @@ string getFilename(int state){
 return inputFile;
 }
 
+/*
+Purpose: Saves stats to file
+Pre: filename from user and statArray populated
+Post: filename populates with data
+Author: Kevin
+*/
 void saveStats(string filename, string statArray[], int statSize){
     ofstream fout;
     fout.open(filename.c_str(), ios::out);
@@ -63,6 +79,12 @@ void saveStats(string filename, string statArray[], int statSize){
     fout.close();
 }
 
+/*
+Purpose: Loads stats from file
+Pre: filename from user
+Post: statsArray populates with data for extraction
+Author: Kevin
+*/
 void loadStats(string filename, string statArray[], int statSize){
     ifstream fin;
     fin.open(filename.c_str(), ios::in);
@@ -75,6 +97,12 @@ void loadStats(string filename, string statArray[], int statSize){
 
 }
 
+/*
+Purpose: To display ascii art
+Pre: Code for which art to display defined
+Post: ascii art is displayed on screen
+Author: Kevin
+*/
 void displayArt(int code) {
     switch (code) {
         // Logo
@@ -130,6 +158,12 @@ void displayArt(int code) {
         }
 }
 
+/*
+Purpose: Main menu function when game opened
+Pre: None
+Post: Menu options are outputted onto screen. Returns option input from user
+Author: Kevin
+*/
 int mainMenu() {
     int menuValue, option = -1;// passed to main: 1 will call charGen. 2 loads old character.
        do {
