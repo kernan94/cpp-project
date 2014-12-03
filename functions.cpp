@@ -126,23 +126,22 @@ void displayArt(int code) {
 }
 
 int mainMenu() {
-    int menuValue, option = -1;//passed to main: 1 will call charGen. 2 loads old character.
-    do {
+    int menuValue, option = -1;// passed to main: 1 will call charGen. 2 loads old character.
        do {
            cout << "Select an option: " << endl;
            cout << "1. New Game" << endl;
            cout << "2. Load Game" << endl;
            cout << "0. Exit" << endl;
         
-           cin >> menuValue;
+           cin >> menuValue; // This needs input validation!
            if (menuValue == 1){
                option = 1;
            } else if (menuValue == 2){
                option = 2;  
-           } else if (menuValue != 0){
-               cout << "Please enter valid input" << endl;
+           } else if (menuValue == 0){
+               cout << "Thanks for Playing!" << endl;
+               exit(0);
            }
-       } while (menuValue != 0); // eliminate loop? continue automatically if  1 or 2 are entered, error message if something else is entered.
        if (option != 1 && option != 2){
           cout << "Please choose new or load before exiting menu" << endl;
        }
