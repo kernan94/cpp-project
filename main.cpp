@@ -17,7 +17,8 @@ int main()
    }
     else if (option == 2)
     {
-       getFilename(1);
+       filename = getFilename(1);
+       loadStats(filename, statArray, statSize);
        extractArray(charName, charHealth, charPower, roomNumber, potionCount, healthMax, statArray);
     }
 

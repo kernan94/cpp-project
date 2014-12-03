@@ -65,8 +65,13 @@ void saveStats(string filename, string statArray[], int statSize){
 
 void loadStats(string filename, string statArray[], int statSize){
     ifstream fin;
+    fin.open(filename.c_str(), ios::in);
 
-
+    // Only need the 6 lines.
+    for (int x=0; x < statSize; x++) {
+        getline(fin,statArray[x]);
+    }
+    fin.close();
 
 }
 
