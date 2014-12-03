@@ -29,14 +29,7 @@ int main()
        {
           charAction = roomChoice(charName, charHealth, potionCount, roomNumber);
           if (charAction == 4){
-            // This could be made a function. Just doing it in main for now
-                statArray[0] = charName;
-                statArray[1] = convertInt2Str(charHealth);
-                statArray[2] = convertInt2Str(charPower);
-                statArray[3] = convertInt2Str(roomNumber);
-                statArray[4] = convertInt2Str(potionCount);
-                statArray[5] = convertInt2Str(healthMax);
-
+                infuseArray(charName, charHealth, charPower, roomNumber, potionCount, healthMax, statArray);
                 filename = getFilename(0);
                 saveStats(filename, statArray, statSize);
            } else if (charAction == 5) {

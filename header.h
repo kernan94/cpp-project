@@ -39,6 +39,7 @@ int mainMenu();
 void displayArt(int);
 void charGen(string&, int&, int&, int&, int&, int&);
 void extractArray(string&, int&, int&, int&, int&, int&, string[]);
+void infuseArray(string&, int&, int&, int&, int&, int&, string[]);
 int roomChoice(string, int, int, int);
 bool resolveCombat(int, int&, int, int&, int, int[]);
 void enemyGen(int, int[]);

@@ -225,6 +225,18 @@ void extractArray(string& name, int& health, int& power, int& room, int& potion,
    max = convertStr2Int(statArray[5]);
 }
 
+void infuseArray(string& name, int& health, int& power, int& room, int& potion, int& max, string statArray[])
+{
+    statArray[0] = name;
+    statArray[1] = convertInt2Str(health);
+    statArray[2] = convertInt2Str(power);
+    statArray[3] = convertInt2Str(room);
+    statArray[4] = convertInt2Str(potion);
+    statArray[5] = convertInt2Str(max);
+}
+
+
+
 /*
 Purpose: extract player's decision.
 Pre:
