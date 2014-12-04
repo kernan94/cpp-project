@@ -14,36 +14,43 @@ int main()
 
     if (option == 1)
     {
-      charGen(charName, charHealth, charPower, roomNumber, potionCount, healthMax);
+        charGen(charName, charHealth, charPower, roomNumber, potionCount, healthMax);
     }
     else if (option == 2)
     {
-       filename = getFilename(1);
-       loadStats(filename, statArray, statSize);
-       extractArray(charName, charHealth, charPower, roomNumber, potionCount, healthMax, statArray);
+        filename = getFilename(1);
+        if (filename == "") // File was not found, start new game
+        {
+        charGen(charName, charHealth, charPower, roomNumber, potionCount, healthMax);
+        }
+        else 
+        {
+        loadStats(filename, statArray, statSize);
+        extractArray(charName, charHealth, charPower, roomNumber, potionCount, healthMax, statArray);
+        }
     }
 
     do
     {
-       enemyGen(roomNumber, enemyArray);
-       do
-       {
-           charAction = roomChoice(charName, charHealth, potionCount, roomNumber);
-           if (charAction == 4){
+        enemyGen(roomNumber, enemyArray);
+        do
+        {
+            charAction = roomChoice(charName, charHealth, potionCount, roomNumber);
+            if (charAction == 4){
                 infuseArray(charName, charHealth, charPower, roomNumber, potionCount, healthMax, statArray);
                 filename = getFilename(0);
                 saveStats(filename, statArray, statSize);
-           } 
-           else if (charAction == 5) 
-           {
+            } 
+            else if (charAction == 5) 
+            {
                 exit(0);
-           } 
-           else 
-           {
+            } 
+            else 
+            {
                 fleeCombat = resolveCombat(charAction, charHealth, charPower, potionCount, healthMax, enemyArray);
-           }
+            }
         } while (charHealth > 0 && enemyArray[0] > 0 && fleeCombat != true);
-    
+
         roomNumber++;
     
     } while (charHealth > 0);

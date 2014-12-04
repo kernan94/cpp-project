@@ -30,6 +30,7 @@ string getFilename(int state)
         if(fin.fail())
         {
             cout << "Error: File cannot be opened." << endl;
+            inputFile = "";
         }
         fin.close();
         return inputFile;
