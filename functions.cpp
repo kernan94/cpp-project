@@ -9,7 +9,8 @@ Pre: state defined for action
 Post: tests file first, will output if error or warning
 Author: Kevin
 */
-string getFilename(int state){
+string getFilename(int state)
+{
     string overwrite, inputFile, outputFile;
     bool alwaysTrue = true;
     ifstream fin;
@@ -17,7 +18,8 @@ string getFilename(int state){
 
     // state 1 == input
     // state 0 == output
-    if (state == 1){
+    if (state == 1)
+    {
         cout << "Input Filename: ";
         cin >> inputFile;
         cin.clear();
@@ -25,14 +27,17 @@ string getFilename(int state){
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
 
         fin.open(inputFile.c_str(), ios::in);
-        if(fin.fail()){
+        if(fin.fail())
+        {
             cout << "Error: File cannot be opened." << endl;
         }
         fin.close();
         return inputFile;
 
     
-    }else{
+    } 
+    else
+    {
         while (alwaysTrue){
         cout << "Output Filename: ";
         cin >> outputFile;
@@ -41,17 +46,21 @@ string getFilename(int state){
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
 
         fout.open(outputFile.c_str(), ios::in);
-            if(fout.good()){ // file we are going to write to exists!
+            if(fout.good()) // file we are going to write to exists!
+            { 
                 cout << outputFile << " already exists, overwrite? (Y/N)" << endl;
                 cin >> overwrite;
                 cin.clear();
                 cin.sync();
                 cin.ignore(numeric_limits<streamsize>::max(),'\n');
-                if (overwrite == "Y" || overwrite == "y") {
+                if (overwrite == "Y" || overwrite == "y") 
+                {
                     fout.close();
                     return outputFile;   
                 }
-            } else{
+            } 
+            else
+            {
                 return outputFile;           
             }
          fout.close();   
@@ -59,7 +68,7 @@ string getFilename(int state){
     }
 
 // Should never return this. I'm getting compiler warnings if I don't return a string here.
-return inputFile;
+    return inputFile;
 }
 
 /*
@@ -68,11 +77,13 @@ Pre: filename from user and statArray populated
 Post: filename populates with data
 Author: Kevin
 */
-void saveStats(string filename, string statArray[], int statSize){
+void saveStats(string filename, string statArray[], int statSize)
+{
     ofstream fout;
     fout.open(filename.c_str(), ios::out);
 
-    for (int x=0; x < statSize; x++){
+    for (int x=0; x < statSize; x++)
+    {
         fout << statArray[x] << endl;
     }
 
@@ -85,12 +96,14 @@ Pre: filename from user
 Post: statsArray populates with data for extraction
 Author: Kevin
 */
-void loadStats(string filename, string statArray[], int statSize){
+void loadStats(string filename, string statArray[], int statSize)
+{
     ifstream fin;
     fin.open(filename.c_str(), ios::in);
 
     // Only need the 6 lines.
-    for (int x=0; x < statSize; x++) {
+    for (int x=0; x < statSize; x++) 
+    {
         getline(fin,statArray[x]);
     }
     fin.close();
@@ -103,8 +116,10 @@ Pre: Code for which art to display defined
 Post: ascii art is displayed on screen
 Author: Kevin
 */
-void displayArt(int code) {
-    switch (code) {
+void displayArt(int code) 
+{
+    switch (code) 
+    {
         // Logo
         case 1:
             cout << "                  {}\n";
@@ -151,11 +166,7 @@ void displayArt(int code) {
             cout << "             |/\n";
             break;
 
-        // Monster
-        case 3:
-            
-            break;
-        }
+    }
 }
 
 /*
@@ -164,26 +175,33 @@ Pre: None
 Post: Menu options are outputted onto screen. Returns option input from user
 Author: Kevin
 */
-int mainMenu() {
+int mainMenu() 
+{
     int menuValue, option = -1;// passed to main: 1 will call charGen. 2 loads old character.
-       do {
-           cout << "Select an option: " << endl;
-           cout << "1. New Game" << endl;
-           cout << "2. Load Game" << endl;
-           cout << "0. Exit" << endl;
+        do {
+            cout << "Select an option: " << endl;
+            cout << "1. New Game" << endl;
+            cout << "2. Load Game" << endl;
+            cout << "0. Exit" << endl;
         
-           cin >> menuValue; // This needs input validation!
-           if (menuValue == 1){
+            cin >> menuValue; // This needs input validation!
+            if (menuValue == 1)
+            {
                option = 1;
-           } else if (menuValue == 2){
+            } 
+            else if (menuValue == 2)
+            {
                option = 2;  
-           } else if (menuValue == 0){
+            } 
+            else if (menuValue == 0)
+            {
                cout << "Thanks for Playing!" << endl;
                exit(0);
            }
-       if (option != 1 && option != 2){
-          cout << "Please choose new or load before exiting menu" << endl;
-       }
+        if (option != 1 && option != 2)
+        {
+            cout << "Please choose new or load before exiting menu" << endl;
+        }
     } while( option != 1 && option != 2);
    return option;
 }
@@ -225,6 +243,12 @@ void extractArray(string& name, int& health, int& power, int& room, int& potion,
    max = convertStr2Int(statArray[5]);
 }
 
+/*
+Purpose: Convert stats into appropriate datatypes and into array
+Pre: statArray[] populated with character info.
+Post: charName, charHealth, charPower, roomNumber, potionCount, healthMax passed by reference. charName remains as string.
+Author: Kevin
+*/
 void infuseArray(string& name, int& health, int& power, int& room, int& potion, int& max, string statArray[])
 {
     statArray[0] = name;
@@ -255,12 +279,14 @@ int roomChoice(string name, int health, int potions, int room)
     cout << "4. Save" << setw(10) << "" << " 5. Quit" << endl;
     cin.clear();
 
-    while(true) {
+    while(true) 
+    {
         cout << "Your choice is: ";
         getline(cin, input);
         
         stringstream convertStream(input);
-        if (convertStream >> action){
+        if (convertStream >> action)
+        {
             break;
         }
         cout << "Please enter valid input" << endl;
@@ -279,38 +305,39 @@ bool resolveCombat(int action, int& health, int power, int& potion, int max, int
    int damage;
    bool run = false;
 
-   switch (action) {
-      //attack was chosen
-   case 1:
-      damage = (rand() % 4) * power;
-      cout << "You dealt " << damage << " points of damage!" << endl;
-      enemyArray[0] = enemyArray[0] - damage;
+   switch (action) 
+    {
+        //attack was chosen
+        case 1:
+            damage = (rand() % 4) * power;
+            cout << "You dealt " << damage << " points of damage!" << endl;
+            enemyArray[0] = enemyArray[0] - damage;
 
-      if (enemyArray[0] <= 0)
-         cout << "You defeated the enemy and continue to the next room." << endl << endl;
-      break;
+            if (enemyArray[0] <= 0)
+                cout << "You defeated the enemy and continue to the next room." << endl << endl;
+            break;
 
-      //use potion was chosen.
-   case 2:
-      if (potion > 0)
-      {
-         health = max;
-         potion = potion - 1;
-      }
-      else
-         cout << "You search for potions in your bag but you have none!" << endl << endl;
-      break;
+        //use potion was chosen.
+        case 2:
+            if (potion > 0)
+            {
+                health = max;
+                potion = potion - 1;
+            }
+            else
+                cout << "You search for potions in your bag but you have none!" << endl << endl;
+            break;
 
-      //run was chosen.
-   case 3:
-      if (rand() % 4 == 3) //one fourth chance to flee.
-      {
-         run = true;
-         cout << "You successfully fled combat and continue to the next room." << endl << endl;
-      }
-      else
-         cout << "You failed to flee combat." << endl;
-      break;
+        //run was chosen.
+        case 3:
+            if (rand() % 4 == 3) //one fourth chance to flee.
+            {
+                run = true;
+                cout << "You successfully fled combat and continue to the next room." << endl << endl;
+            }
+            else
+                cout << "You failed to flee combat." << endl;
+            break;
    }
    if (enemyArray[0] > 0 && run != true)
    {
@@ -333,18 +360,18 @@ void enemyGen(int room, int enemyArray[])
    enemyArray[1] = rand() % 6 + room * 2; //enemy power is 0 to 5 plus room modifier.
 }
 
+
+/*
+Purpose: End Game, Show how far character went.
+Pre: room it made it too
+Post: End game
+Author: Reuben
+*/
 void charDeath(int room)
 {
    string restart;
-   cout << "Congratulatios, you reached room " << room << " before dying!" << endl;
-   cout << "Would you like to create a new character? (Y/N)" << endl;
-   cin >> restart;
+   cout << "Congratulations, you reached room " << room << " before dying!" << endl;
 }
-
-
-
-
-
 
 
 //Taken from lab 5.
