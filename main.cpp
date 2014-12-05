@@ -49,7 +49,7 @@ int main()
             {
                 fleeCombat = resolveCombat(charAction, charHealth, charPower, potionCount, healthMax, enemyArray);
             }
-        } while (charHealth > 0 && enemyArray[0] > 0 && fleeCombat != true);
+        } while (charHealth > 0 && enemyArray[0] > 0 && fleeCombat != true); //repeats until either combatant dead or player fled.
 
         roomNumber++;
     

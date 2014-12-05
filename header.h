@@ -32,17 +32,17 @@ database for the purpose of future plagiarism checking)
 #include <ctime>
 using namespace std;
 
-string getFilename(int);
 void saveStats(string, string[], int);
-void loadStats(string, string[], int);
-int mainMenu();
-void displayArt(int);
-void charGen(string&, int&, int&, int&, int&, int&);
-void extractArray(string&, int&, int&, int&, int&, int&, string[]);
-void infuseArray(string&, int&, int&, int&, int&, int&, string[]);
 int roomChoice(string, int, int, int);
 bool resolveCombat(int, int&, int, int&, int, int[]);
+int mainMenu();
+void loadStats(string, string[], int);
+void infuseArray(string&, int&, int&, int&, int&, int&, string[]);
+string getFilename(int);
+void extractArray(string&, int&, int&, int&, int&, int&, string[]);
 void enemyGen(int, int[]);
+void displayArt(int);
+void charGen(string&, int&, int&, int&, int&, int&);
 void charDeath(int);
 
 string convertInt2Str(int);
